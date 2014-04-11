@@ -1,0 +1,32 @@
+CREATE TABLE departamento (
+  codigo_d VARCHAR2(40) NOT NULL,
+  nombre_d VARCHAR2(40) NOT NULL,
+  ciudad VARCHAR2(40) NOT NULL,
+  CONSTRAINT PK_departamento PRIMARY KEY (codigo_d)
+)
+
+insert into departamento values('109','aseo','cali');
+
+---------------------------------------------------------------------
+
+CREATE TABLE empleado (
+  codigo_e VARCHAR2(40) NOT NULL,
+  apellido VARCHAR2(40) NOT NULL,
+  nombre VARCHAR2(40) NOT NULL,
+  sexo VARCHAR2(40),
+  salario number NOT NULL,
+  codigo_d VARCHAR2(40) NOT NULL,  
+);
+
+ALTER TABLE empleado
+  ADD CONSTRAINT FK_empleado_departamento
+  FOREIGN KEY (codigo_d) REFERENCES departamento (codigo_d)
+
+
+insert into empleado values('1081162','soto carabali', 'yeison asdrubal','m',500000,'108')
+
+
+select * from empleado where codigo_d = '109'
+
+
+
